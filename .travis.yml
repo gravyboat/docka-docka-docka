@@ -7,7 +7,7 @@ services:
 
 before_install:
   - docker build -t forresta/docka-docka-docka docka-project/
-  - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka/
+  - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka
   - docker ps -a
 
 script:
