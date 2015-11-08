@@ -15,5 +15,8 @@ script:
     - echo "Test code here again"
 
 after_success:
+    branches:
+      only:
+        - test
     - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
     - docker push forresta/docka-docka-docka-test
