@@ -11,4 +11,4 @@ before_install:
   - docker ps -a
 
 script:
-    - curl 127.0.0.1:80
+    - wget 127.0.0.1:80
