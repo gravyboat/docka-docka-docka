@@ -9,6 +9,7 @@ before_install:
   - docker build -t forresta/docka-docka-docka docka-project/
   - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka
   - docker ps -a
+  - docker run forresta/docka-docka-docka /bin/sh -c "echo 'tests call here'"
 
 script:
-    - echo 'script test'
+    - echo "Test code here again"
