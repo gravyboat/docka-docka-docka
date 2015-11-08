@@ -1,0 +1,14 @@
+sudo: required
+
+language: python
+
+services:
+  - docker
+
+before_install:
+  - docker build -t forresta/docka-docka-docka docka-project/
+  - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka/
+  - docker ps -a
+
+script:
+    - curl 127.0.0.1:80
