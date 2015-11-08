@@ -54,7 +54,8 @@ Note that Travis will automatically test when you make a PR as noted here:
 http://docs.travis-ci.com/user/pull-requests/
 
 It is important to ensure that you complete the instructions to use Travis and
-Docker, as users will be pushing to the Docker registry. For this project it is
+Docker (especially the environment variables so you can push to the docker
+hub), as users will be pushing to the Docker registry. For this project it is
 recommended that you use the same login as otherwise SaltStack will not know
 which project to pull down.
 
