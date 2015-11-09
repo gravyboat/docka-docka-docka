@@ -1,8 +1,4 @@
-def run():
-  ret = {}
-  ret['deploy'] = {
-      'cmd.state.highstate': [
-          {tgt': 'G@roles:test'},
-      ]
-  }
-  return ret
+run_highstate_test:
+  cmd.state.highstate:
+    - tgt: 'env:test'
+    - expr_form: grain
