@@ -1,5 +1,5 @@
 include:
-  yum.epel
+  - yum.epel
 
 install_pip:
   pkg.installed:
