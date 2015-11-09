@@ -8,30 +8,34 @@ environments. It's made of three components:
 components
 ----------
 
-docka-dev:
+docka-project
+-------------
 
-docka-dev uses boot2docker, GitHub, and Travis CI to allow devs to write code
-locally, push to an environment, allow testing to occur, and merge back into a
-branch on GitHub which is then ready for docka-test.
+docka-dev uses boot2docker/docker, GitHub, and Travis CI to allow devs to
+write code locally, build container images, push to an environment, allow
+testing to occur, and merge back into a branch on GitHub which is then ready
+for deployment.
 
-docka-test:
+docka-hub
+---------
 
-docka-test uses docker, GitHub, Travis CI, nginx-proxy and SaltStack for
-configuration management to build your system and keep your docker containers
-up to date so they are accessible for the test environment.
+docka-hub explains how to set up web hooks within docker hub to hook up to the
+salt service that is listening.
 
-docka-prod:
+docka-salt
+----------
 
-docker-prod uses docker, GitHub, Travis CI, nginx-proxy, and SaltStack for
-configuration management to build your system and keep your docker containers
-up to date so they are accessible for the production environment.
+docka-salt uses SaltStack to listen for docker updates and deploy them to the
+server, it also handles the nginx-proxy that updates when services change.
 
 The Goal
 --------
 
-docka-docka-docka was designed to use only free, open source software. It takes
-advantage of these tools to streamline and ease the process so that engineers
-don't have to set up an excessive number of tools.
+docka-docka-docka was designed to use only free, open source software that
+anyone would have access to. It takes advantage of these tools to show how
+streamlined and easy the process can be so that engineers don't have to set up
+an excessive number of tools to deploy their docker containers to their hosting
+provider.
 
 Workflow
 --------
@@ -48,5 +52,8 @@ to the test server for deployment, nginx-proxy will pick up this change for
 the associated service. If everything looks good here the same process is
 repeated for the prod branch, and the prod environment.
 
-docka-dev
----------
+Note that currently docker has no way to distinguish between when
+`after_success` commands should be run based on branches, so if a developer
+opens a PR against test and the code runs it will be deployed to the docka
+test environment. https://github.com/travis-ci/travis-ci/issues/5065 has been
+opened to request support for only completing after_success based on branch.
