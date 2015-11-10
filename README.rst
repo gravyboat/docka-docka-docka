@@ -8,30 +8,34 @@ environments. It's made of three components:
 components
 ----------
 
-docka-dev:
+docka-project
+-------------
 
-docka-dev uses boot2docker, GitHub, and Travis CI to allow devs to write code
-locally, push to an environment, allow testing to occur, and merge back into a
-branch on GitHub which is then ready for docka-test.
+docka-dev uses boot2docker/docker, GitHub, and Travis CI to allow devs to
+write code locally, build container images, push to an environment, allow
+testing to occur, and merge back into a branch on GitHub which is then ready
+for deployment.
 
-docka-test:
+docka-hub
+---------
 
-docka-test uses docker, GitHub, Travis CI, nginx-proxy and SaltStack for
-configuration management to build your system and keep your docker containers
-up to date so they are accessible for the test environment.
+docka-hub explains how to set up web hooks within docker hub to hook up to the
+salt service that is listening.
 
-docka-prod:
+docka-salt
+----------
 
-docker-prod uses docker, GitHub, Travis CI, nginx-proxy, and SaltStack for
-configuration management to build your system and keep your docker containers
-up to date so they are accessible for the production environment.
+docka-salt uses SaltStack to listen for docker updates and deploy them to the
+server, it also handles the nginx-proxy that updates when services change.
 
 The Goal
 --------
 
-docka-docka-docka was designed to use only free, open source software. It takes
-advantage of these tools to streamline and ease the process so that engineers
-don't have to set up an excessive number of tools.
+docka-docka-docka was designed to use only free, open source software that
+anyone would have access to. It takes advantage of these tools to show how
+streamlined and easy the process can be so that engineers don't have to set up
+an excessive number of tools to deploy their docker containers to their hosting
+provider.
 
 Workflow
 --------
@@ -45,8 +49,23 @@ everything looks good the developer can then open a PR against the test branch
 which is once again tested in Travis, if this PR passes and the content is
 merged SaltStack will then pick up the associated Docker image and push it
 to the test server for deployment, nginx-proxy will pick up this change for
-the associated service. If everything looks good here the same process is
-repeated for the prod branch, and the prod environment.
+the associated service. If everything looks good here the same process can be
+repeated for the production branch and environment which will be automatically
+deployed.
 
-docka-dev
----------
+Note that currently docker has no way to distinguish between when
+`after_success` commands should be run based on branches. There
+are workarounds in the .travis.yml file that handle this.
+Https://github.com/travis-ci/travis-ci/issues/5065 has been
+opened to request support for only completing after_success based on branch in
+a more streamlined manner
+
+known issues
+------------
+
+The current way the states are configured only support CentOS/RHEL based
+distros. There should only be minor changes (primarily the repo data) required
+to make this support Ubuntu/Debian.
+
+Current on RHEL based distros it seems as though there is an issue removing
+containers: https://github.com/docker/docker/issues/3610#issuecomment-155532043
