@@ -47,7 +47,6 @@ install_docka_project_container:
 {% endif %}
     - port_bindings:
       - 5000:5000
-    - force: True
     - environment:
       - VIRTUAL_HOST: test.hungryadmin.com
     - detach: True
