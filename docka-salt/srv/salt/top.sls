@@ -1,4 +1,4 @@
 base:
   '*':
     - python.pip
-    - docker
+    - docker.docka

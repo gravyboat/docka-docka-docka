@@ -6,7 +6,7 @@ configure_docker_repo:
     - name: dockerrepo
     - hummanname: Docker Repository
     - baseurl: https://yum.dockerproject.org/repo/main/centos/7
-    - gpgcheck: True
+    - gpgcheck: 0
     - key_url: https://yum.dockerproject.org/repo/main/centos/7
     - refresh_db: True
 
@@ -15,5 +15,10 @@ install_docker:
     - name: docker-engine
 
 install_docker_py:
-  pip.install:
+  pip.installed:
     - name: docker-py
+
+docker_service:
+  service.running:
+    - name: docker
+    - enable: True
