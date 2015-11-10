@@ -13,8 +13,7 @@ install_nginx_proxy_container:
     - port_bindings:
       - 80:80
     - detach: True
-    - volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+    - binds: /var/run/docker.sock:/tmp/docker.sock:ro
 
 
 docka_container_present:
