@@ -49,11 +49,23 @@ everything looks good the developer can then open a PR against the test branch
 which is once again tested in Travis, if this PR passes and the content is
 merged SaltStack will then pick up the associated Docker image and push it
 to the test server for deployment, nginx-proxy will pick up this change for
-the associated service. If everything looks good here the same process is
-repeated for the prod branch, and the prod environment.
+the associated service. If everything looks good here the same process can be
+repeated for the production branch and environment which will be automatically
+deployed.
 
 Note that currently docker has no way to distinguish between when
-`after_success` commands should be run based on branches, so if a developer
-opens a PR against test and the code runs it will be deployed to the docka
-test environment. https://github.com/travis-ci/travis-ci/issues/5065 has been
-opened to request support for only completing after_success based on branch.
+`after_success` commands should be run based on branches. There
+are workarounds in the .travis.yml file that handle this.
+Https://github.com/travis-ci/travis-ci/issues/5065 has been
+opened to request support for only completing after_success based on branch in
+a more streamlined manner
+
+known issues
+------------
+
+The current way the states are configured only support CentOS/RHEL based
+distros. There should only be minor changes (primarily the repo data) required
+to make this support Ubuntu/Debian.
+
+Current on RHEL based distros it seems as though there is an issue removing
+containers: https://github.com/docker/docker/issues/3610#issuecomment-155532043

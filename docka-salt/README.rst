@@ -56,14 +56,15 @@ as specific in our reactor states.
 Installation
 ============
 
-Begin by installing the Salt Master as specified here but only installing the
-Salt Master package:
+Begin by installing the Salt Master (on the system you have designated
+as the Salt master) as specified here but only installing the
+Salt Master and salt-api packages:
 
 https://docs.saltstack.com/en/latest/topics/installation/
 
 Once completed install the Salt minion using the same process on both the 
 test and production servers. Once the master has been installed and the user
-have confirmed it is listening modify the minion configs with the data from the
+has confirmed it is listening modify the minion configs with the data from the
 `Salt Minion` section above and restart both minions. On the master a
 privileged system user should now be able to run `salt-key --list-all` and see
 the two minions trying to connect, the user should now run
@@ -74,3 +75,5 @@ test servers.
 Directories should now be copied to their relevant directory on the master
 system as mapped below:
 
+`master.d -> /etc/salt/master.d/`
+`srv -> /etc/salt/srv`
