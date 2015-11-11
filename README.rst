@@ -3,7 +3,11 @@ docka-docka-docka
 
 docka-docka-docka is a full environment example to help you and your developers
 get up to speed quickly with an environment which can be duplicated between
-environments. Currently it is suggested to use Ubuntu due to the known issues
+environments. Keep in mind that this repo is simply an example that shows
+all components. In a real example (which you'll hopefully create) the
+directories populated with actual content would be different repos. This is
+simply an example of how to set up all the components you will need to get
+going. Currently it is suggested to use Ubuntu due to the known issues
 listed at the bottom of this Readme. It's made of three components:
 
 components
