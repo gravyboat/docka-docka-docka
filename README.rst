@@ -69,3 +69,6 @@ to make this support Ubuntu/Debian.
 
 Current on RHEL based distros it seems as though there is an issue removing
 containers: https://github.com/docker/docker/issues/3610#issuecomment-155532043
+this means that sometimes the docker deployment (unfortunately) fails. There
+are workarounds, however they require adding a disk which was not something
+that belonged in this repo.
