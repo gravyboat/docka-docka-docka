@@ -36,7 +36,7 @@ server, it also handles the nginx-proxy that updates when services change.
 The Goal
 --------
 
-docka-docka-docka was designed to use only free, open source software that
+docka-docka-docka was designed to use open source software that
 anyone would have access to. It takes advantage of these tools to show how
 streamlined and easy the process can be so that engineers don't have to set up
 an excessive number of tools to deploy their docker containers to their hosting
