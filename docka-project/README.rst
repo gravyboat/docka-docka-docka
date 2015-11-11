@@ -21,19 +21,19 @@ the following steps to create this image (run these within this directory):
 
 Note that these commands may need to be run as root.
 
-`sudo service docker start`
+``sudo service docker start``
 
-`sudo docker build -t docka-project .`
+``sudo docker build -t docka-project .``
 
 Once the container is created you will need to use the nginx-proxy container
 from jwilder (https://github.com/jwilder/nginx-proxy) to do our automated
 nginx proxying. To start that run this command:
 
-`sudo docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy`
+``sudo docker run -d -p 80:80 -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy``
 
 Then start our Flask app container:
 
-`sudo docker run -e VIRTUAL_HOST=test.com -t -d -p 5000:5000 docka-project`
+``sudo docker run -e VIRTUAL_HOST=test.com -t -d -p 5000:5000 docka-project``
 
 You will need to modify your hosts file to point test.com to either your local
 IP address, or 0.0.0.0.

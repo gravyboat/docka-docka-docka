@@ -11,7 +11,7 @@ components
 docka-project
 -------------
 
-docka-dev uses boot2docker/docker, GitHub, and Travis CI to allow devs to
+docka-project uses boot2docker/docker, GitHub, and Travis CI to allow devs to
 write code locally, build container images, push to an environment, allow
 testing to occur, and merge back into a branch on GitHub which is then ready
 for deployment.
@@ -54,7 +54,7 @@ repeated for the production branch and environment which will be automatically
 deployed.
 
 Note that currently docker has no way to distinguish between when
-`after_success` commands should be run based on branches. There
+``after_success`` commands should be run based on branches. There
 are workarounds in the .travis.yml file that handle this.
 Https://github.com/travis-ci/travis-ci/issues/5065 has been
 opened to request support for only completing after_success based on branch in
