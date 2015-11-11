@@ -12,9 +12,9 @@ to interface with the salt server.
 This example project contains three components. A Salt master, and two Salt
 minions.
 
-NOTE: This project is using CentOS 7, and was designed as a very basic
-tutorial without too much logic. This means that some code will need to be
-modified for other distros.
+NOTE: This project is using CentOS 7 and Ubuntu 14, and was designed as a very
+basic tutorial without too much logic. This means that some code will need to
+be modified for other distros.
 
 Components
 ----------

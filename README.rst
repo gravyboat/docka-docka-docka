@@ -3,7 +3,8 @@ docka-docka-docka
 
 docka-docka-docka is a full environment example to help you and your developers
 get up to speed quickly with an environment which can be duplicated between
-environments. It's made of three components:
+environments. Currently it is suggested to use Ubuntu due to the known issues
+listed at the bottom of this Readme. It's made of three components:
 
 components
 ----------
@@ -65,10 +66,15 @@ known issues
 
 The current way the states are configured only support CentOS/RHEL based
 distros. There should only be minor changes (primarily the repo data) required
-to make this support Ubuntu/Debian.
+to make this support other distros.
 
-Current on RHEL based distros it seems as though there is an issue removing
+Currently on RHEL based distros it seems as though there is an issue removing
 containers: https://github.com/docker/docker/issues/3610#issuecomment-155532043
 this means that sometimes the docker deployment (unfortunately) fails. There
 are workarounds, however they require adding a disk which was not something
 that belonged in this repo.
+
+On Debian based distros there is an odd pip issue which may cause an error
+during the Salt run. This is caused by some pip problems as noted here:
+https://bugs.launchpad.net/ubuntu/+source/python-pip/+bug/1306991
+This is currently worked around in the associated salt code.

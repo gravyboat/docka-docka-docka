@@ -3,3 +3,5 @@ docker-registries:
     email: fakeemail@fakeaddressomg123.com
     password: fak3passw0rd
     username: fak3usernam3
+
+docker.version: auto
