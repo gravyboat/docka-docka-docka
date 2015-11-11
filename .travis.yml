@@ -6,20 +6,17 @@ services:
   - docker
 
 before_install:
-  - docker build -t forresta/docka-docka-docka-test docka-project/
-  - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka-test
+  - docker build -t forresta/docka-docka-docka docka-project/
+  - docker run -d -p 127.0.0.0:80:5000 forresta/docka-docka-docka
   - docker ps -a
-  - docker run forresta/docka-docka-docka-test /bin/sh -c "echo 'tests call here'"
+  - docker run forresta/docka-docka-docka /bin/sh -c "echo 'tests call here'"
 
 script:
+    - echo "Test code here again"
+
+after_success:
     - echo "Test code here again"
     - if [ "$TRAVIS_BRANCH" == "master" ]; then
         docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
         docker push forresta/docka-docka-docka;
-
-after_success:
-    - echo "Test code here again"
-    - if [ "$TRAVIS_BRANCH" == "test" ]; then
-        docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-        docker push forresta/docka-docka-docka-test;
       fi

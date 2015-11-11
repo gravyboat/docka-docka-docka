@@ -38,17 +38,22 @@ minions, see: https://github.com/saltstack/salt/issues/15265 for updates.
 
 The production minion requires the following settings in the minion config:
 
-master: your_master_domain_or_ip
-grains:
-  env:
-    - prod
+.. code-block:: yaml
+
+  master: your_master_domain_or_ip
+
+  grains:
+    env:
+      - prod
 
 The test minion requires the following settings in the minion config:
 
-master: your_master_domain_or_ip
-grains:
-  env:
-    - test
+.. code-block:: yaml
+
+  master: your_master_domain_or_ip
+  grains:
+    env:
+      - test
 
 When set these grains allow us to target the production or test environment
 as specific in our reactor states.
